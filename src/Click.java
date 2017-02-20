@@ -13,27 +13,27 @@ public class Click implements MouseListener
 		{
 			ConwaysGameOfLife.resetMap();
 			ConwaysGameOfLife.getScore().resetScore();
-			ConwaysGameOfLife.getPanel().update();
+			//ConwaysGameOfLife.getPanel().update();
 		}
 		
 		if(Gamepanel.getFillRandom().isPressed(e.getX(), e.getY()))
 		{
 			ConwaysGameOfLife.resetMap();
 			ConwaysGameOfLife.fillMapRandomly();
-			ConwaysGameOfLife.getPanel().update();
+			//ConwaysGameOfLife.getPanel().update();
 			ConwaysGameOfLife.getScore().resetScore();
 		}
 		
 		if(Gamepanel.getPlus().isPressed(e.getX(), e.getY()))
 		{
 			ConwaysGameOfLife.getPanel().upNumForRand();
-			ConwaysGameOfLife.getPanel().update();
+			//ConwaysGameOfLife.getPanel().update();
 		}
 		
 		if(Gamepanel.getMinus().isPressed(e.getX(), e.getY()))
 		{
 			ConwaysGameOfLife.getPanel().downNumForRand();
-			ConwaysGameOfLife.getPanel().update();
+			//ConwaysGameOfLife.getPanel().update();
 		}
 		
 		if(Gamepanel.getNext().isPressed(e.getX(), e.getY()))
@@ -41,13 +41,13 @@ public class Click implements MouseListener
 			ConwaysGameOfLife.nextGeneration();
 			
 			//System.out.println(ConwaysGameOfLife.getScore().getGenerations());
-			ConwaysGameOfLife.getPanel().update();
+			//ConwaysGameOfLife.getPanel().update();
 
 		}
 		
 		if(Gamepanel.getPlay().isPressed(e.getX(), e.getY()))
 		{
-			ConwaysGameOfLife.startSimulation(5);
+			ConwaysGameOfLife.startSimulation();
 		}
 		
 		if(Gamepanel.getPause().isPressed(e.getX(), e.getY())){
@@ -65,7 +65,7 @@ public class Click implements MouseListener
 			int x = (e.getX()/10);
 			int y = (e.getY()/10);
 			ConwaysGameOfLife.swapCell(x, y);
-			ConwaysGameOfLife.getPanel().update();
+			//ConwaysGameOfLife.getPanel().update();
 		}
 	}
 
@@ -88,6 +88,10 @@ public class Click implements MouseListener
 	{
 		
 		
+	}
+	
+	public boolean getPausePressed(){
+		return pausePressed;
 	}
 
 }

@@ -1,3 +1,13 @@
+/**
+ * Author: Stephen Hunter Barbella (hman523)
+ * 
+ * This software uses the GPL license
+ * 
+ * Sorry for the mess this is but as a wise man once said, 
+ * "Weeks of programming can save hours of planning"
+ */
+
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -8,6 +18,25 @@ public class ConwaysGameOfLife {
 	private static Score score;
 	
 	public static void main(String[] args) {
+		new ConwaysGameOfLife();
+		
+		/**JFrame frame = new JFrame("Conway's Game of Life");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		score = new Score();
+		panel = new Gamepanel();
+		panel.addMouseListener(new Click());
+		frame.getContentPane().add(panel);
+		frame.setSize(900, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		map = new boolean[69][69];**/
+		
+		
+	}
+	
+	public ConwaysGameOfLife(){
 		JFrame frame = new JFrame("Conway's Game of Life");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		score = new Score();
@@ -20,6 +49,10 @@ public class ConwaysGameOfLife {
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		map = new boolean[69][69];
+		
+		Thread thread = new Thread(new Repainter());
+        thread.setDaemon(true);
+        thread.start();
 	}
 	
 	public static boolean[][] getMap()
@@ -164,19 +197,21 @@ public class ConwaysGameOfLife {
 		return count;
 	}
 	
-	public static void startSimulation(int count){
-		System.out.println("Loop num: " + count);
-		nextGeneration();
-		panel.update();
-		try{
-			Thread.sleep(100);
+	public static void startSimulation(){
+		Click click2 = new Click();
+		panel.addMouseListener(click2);
+		while(!click2.getPausePressed() && !mapIsEmpty()){
+			nextGeneration();
+			try{
+				Thread.sleep(500);
+			}
+			catch(Exception e){
+			}
+			
 		}
-		catch(Exception e){
-		}
-		
-		if(count > 0){
-			startSimulation(count-1);
-		}
+		panel.removeMouseListener(click2);
 		
 	}
+
+	
 }
