@@ -52,6 +52,7 @@ public class Click implements MouseListener
 		
 		if(Gamepanel.getPause().isPressed(e.getX(), e.getY())){
 			pausePressed = true;
+			
 		}
 		
 		

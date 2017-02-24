@@ -16,6 +16,7 @@ public class ConwaysGameOfLife {
 	private static Gamepanel panel;
 	private static boolean[][] map;
 	private static Score score;
+	private static boolean isPlaying = false;
 	
 	public static void main(String[] args) {
 		new ConwaysGameOfLife();
@@ -116,7 +117,6 @@ public class ConwaysGameOfLife {
 			}
 		}
 		getScore().increment();
-		
 	}
 	
 	public static void printArray(boolean matrix[][]) {
@@ -198,20 +198,35 @@ public class ConwaysGameOfLife {
 	}
 	
 	public static void startSimulation(){
-		Click click2 = new Click();
-		panel.addMouseListener(click2);
-		while(!click2.getPausePressed() && !mapIsEmpty()){
+		isPlaying = true;
+		Click click2;// = new Click();
+		//panel.addMouseListener(click2);
+		while(!mapIsEmpty()){
+			click2 = new Click();
+			panel.addMouseListener(click2);
 			nextGeneration();
 			try{
 				Thread.sleep(500);
 			}
 			catch(Exception e){
 			}
-			
+
+			if(click2.getPausePressed()){
+				break;
+			}
+			panel.removeMouseListener(click2);
+			isPlaying = false;
+			//TODO: figure out how to exit this loop
 		}
-		panel.removeMouseListener(click2);
+		
+		
 		
 	}
+
+	public static boolean isPlaying() {
+		return isPlaying;
+	}
+
 
 	
 }
