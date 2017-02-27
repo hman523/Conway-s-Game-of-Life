@@ -11,12 +11,6 @@ public class Repainter implements Runnable {
              } catch (InterruptedException ex) {
              }
              panel.paintImmediately(0,0,900,700);
-             if(ConwaysGameOfLife.isPlaying()){
-            	 //TODO: make this work
-            	 Click click2 = new Click();
-            	 ConwaysGameOfLife.getPanel().addMouseListener(click2);
-            	 
-             }
              
          }
 		

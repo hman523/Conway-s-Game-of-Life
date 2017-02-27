@@ -3,8 +3,10 @@ import javax.swing.*;
 
 public class Gamepanel extends JPanel{
 	
-	static Button clear, fillRandom, plus, minus, next, play, pause;
-	static int numForRand = 700;
+	private static Button clear, fillRandom, plus, minus, next, play, pause;
+	private static int numForRand = 700;
+	
+	
 	public Gamepanel()
 	{
 		setBackground(Color.white);

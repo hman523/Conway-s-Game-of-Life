@@ -4,11 +4,12 @@ import java.awt.event.MouseListener;
 public class Click implements MouseListener
 {
 
-	static boolean pausePressed = false;
+	private static boolean pausePressed = false;
 	
 	
 	public void mouseClicked(MouseEvent e) 
 	{
+		System.out.println("Mouse Clicked");
 		if(Gamepanel.getClear().isPressed(e.getX(), e.getY()))
 		{
 			ConwaysGameOfLife.resetMap();

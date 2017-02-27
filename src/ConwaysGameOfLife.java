@@ -199,11 +199,12 @@ public class ConwaysGameOfLife {
 	
 	public static void startSimulation(){
 		isPlaying = true;
-		Click click2;// = new Click();
-		//panel.addMouseListener(click2);
+		Click click2 = new Click();
+		panel.addMouseListener(click2);
 		while(!mapIsEmpty()){
-			click2 = new Click();
+			
 			panel.addMouseListener(click2);
+			panel.requestFocus();
 			nextGeneration();
 			try{
 				Thread.sleep(500);
@@ -214,7 +215,6 @@ public class ConwaysGameOfLife {
 			if(click2.getPausePressed()){
 				break;
 			}
-			panel.removeMouseListener(click2);
 			isPlaying = false;
 			//TODO: figure out how to exit this loop
 		}
